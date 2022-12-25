@@ -24,9 +24,9 @@ export function App() {
   }
   function gameOver() {
     localStorage.setItem(
-"highScore", 
-Math.max(score, 
-localStorage.getItem("highScore")));
+      "highScore",
+      Math.max(score, localStorage.getItem("highScore"))
+    );
     setScore(0);
     setAskedFlagQuestions([]);
     setAskedCapitalQuestions([]);
@@ -95,7 +95,6 @@ localStorage.getItem("highScore")));
   ) {
     return <div>Loading...</div>;
   }
-  console.log(countries);
 
   return (
     <Container
