@@ -53,8 +53,8 @@ I used react in this project, learned stuff about context even though I didn't e
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 - [React](https://reactjs.org/)
-- [React Dom Router] (https://reactrouter.com/)
-- [Meterial UI] (https://mui.com/)
+- [React Dom Router](https://reactrouter.com/)
+- [Meterial UI](https://mui.com/)
 
 ## Features
 
