@@ -23,7 +23,7 @@ export function App() {
     return data;
   }
   function gameOver() {
-    localStorage.setItem("highScore", score);
+    localStorage.setItem("highScore", Math.max(score, local storage.getItem("highScore")));
     setScore(0);
     setAskedFlagQuestions([]);
     setAskedCapitalQuestions([]);
