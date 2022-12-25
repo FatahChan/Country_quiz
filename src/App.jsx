@@ -19,7 +19,7 @@ export function App() {
   async function fetchCountriesData() {
     const response = await fetch("https://restcountries.com/v3.1/all");
     let data = await response.json();
-    data = data.filter((country) => country.capital);
+    data = data.filter((country) => country.capital && country.independent);
     return data;
   }
   function gameOver() {
@@ -63,7 +63,8 @@ export function App() {
   }
   useEffect(() => {
     let ignore = false;
-    const cachedCountries = localStorage.getItem("countriesv2");
+
+    const cachedCountries = localStorage.getItem("countriesv3");
     if (cachedCountries) {
       setCountries(JSON.parse(cachedCountries));
     } else {
@@ -71,7 +72,7 @@ export function App() {
       fetchCountriesData().then((result) => {
         if (!ignore) {
           setCountries(result);
-          localStorage.setItem("countriesv2", JSON.stringify(result));
+          localStorage.setItem("countriesv3", JSON.stringify(result));
         }
       });
     }
@@ -91,7 +92,7 @@ export function App() {
   ) {
     return <div>Loading...</div>;
   }
-  console.log(selectedCapitalCountry, selectedFlagCountry, "loading...");
+  console.log(countries);
 
   return (
     <Container
@@ -146,8 +147,6 @@ export function App() {
         component="h2"
         align="center"
       >
-        Made by:{"Ahmad Fathallah"}
-        <br />
         <a href="https://github.com/FatahChan/Country_quiz">Source Code</a>
       </Typography>
     </Container>

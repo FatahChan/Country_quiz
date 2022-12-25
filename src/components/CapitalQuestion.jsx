@@ -7,7 +7,7 @@ const CapitalQuestion = (props) => {
   const countries = props.countries;
   const selectedCountry = props.selectedCapitalCountry;
   const selectedCountryName = selectedCountry.name.common;
-  const selectedCountryCapital = selectedCountry.capital[0];
+  const selectedCountryCapitals = selectedCountry.capital;
   const selectedCountryCIOC = selectedCountry.cioc;
   const selectRandomCountry = props.selectRandomCountry;
   const setScore = props.setScore;
@@ -59,7 +59,11 @@ const CapitalQuestion = (props) => {
   return (
     <Stack spacing={3} alignItems="center">
       <Typography variant="h6" component="h4" align="center">
-        <u>{selectedCountryCapital}</u> is the capital of ...?
+        <u>{selectedCountryCapitals.join(", ")}</u>{" "}
+        {selectedCountryCapitals.length > 1
+          ? "are the capitals"
+          : "is the capital"}{" "}
+        of ...?
       </Typography>
       <Stack direction="column" spacing={2}>
         {choices.map((choice) => (
