@@ -27,7 +27,7 @@ const Home = () => {
           from its flag or capital city.
         </Typography>
         <Typography variant="h6" component="h2" align="center">
-          You will be given 3 choices for each question. If you get the answer
+          You will be given 4 choices for each question. If you get the answer
           correct, you will be awarded 1 point. If you get the answer wrong, the
           game will end.
         </Typography>
