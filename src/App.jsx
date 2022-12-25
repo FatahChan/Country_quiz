@@ -2,10 +2,11 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Container, Stack, Typography, useMediaQuery } from "@mui/material";
 import FlagQuesiton from "./components/FlagQuesiton";
 import CapitalQuestion from "./components/CapitalQuestion";
+import { useNavigate } from "react-router-dom";
 export function App() {
   // useMediaQuery for if height is less than 800px
   const isMobile = useMediaQuery("(max-height:800px)");
-
+  const navigate = useNavigate();
   const [countries, setCountries] = useState([]);
   const [selectedFlagCountry, setselectedFlagCountry] = useState(null);
   const [selectedCapitalCountry, setselectedCapitalCountry] = useState(null);
@@ -21,7 +22,13 @@ export function App() {
     data = data.filter((country) => country.capital);
     return data;
   }
-
+  function gameOver() {
+    localStorage.setItem("highScore", score);
+    setScore(0);
+    setAskedFlagQuestions([]);
+    setAskedCapitalQuestions([]);
+    navigate("/");
+  }
   function selectRandomCountry(type) {
     if (type !== "flag") {
       // get a coutnries that has not been asked in capital questions
@@ -120,6 +127,7 @@ export function App() {
             setScore={setScore}
             setAskedFlagQuestions={setAskedFlagQuestions}
             selectRandomCountry={selectRandomCountry}
+            gameOver={gameOver}
           ></FlagQuesiton>
         ) : (
           <CapitalQuestion
@@ -128,6 +136,7 @@ export function App() {
             setScore={setScore}
             setAskedCapitalQuestions={setAskedCapitalQuestions}
             selectRandomCountry={selectRandomCountry}
+            gameOver={gameOver}
           ></CapitalQuestion>
         )}
       </Stack>

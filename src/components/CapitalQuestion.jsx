@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Stack, Typography, Button, useMediaQuery } from "@mui/material";
 const CapitalQuestion = (props) => {
   // useMediaQuery for if weight is less than 800px
@@ -12,32 +12,47 @@ const CapitalQuestion = (props) => {
   const selectRandomCountry = props.selectRandomCountry;
   const setScore = props.setScore;
   const setAskedCapitalQuestions = props.setAskedCapitalQuestions;
-  let choices = [];
-
+  const gameOver = props.gameOver;
+  const [reavealed, setRevealed] = React.useState(false);
+  const [choices, setChoices] = React.useState([]);
   // get 3 random countries
-  for (let i = 0; i < 3; i++) {
-    let randomIndex = Math.floor(Math.random() * countries.length);
-    let randomCountry = countries[randomIndex];
-    choices.push(randomCountry.name.common);
-  }
+  useEffect(() => {
+    let choices = [];
+    for (let i = 0; i < 3; i++) {
+      let randomIndex = Math.floor(Math.random() * countries.length);
+      let randomCountry = countries[randomIndex];
+      choices.push(randomCountry.name.common);
+    }
+    choices.push(selectedCountryName);
+    choices.sort(() => Math.random() - 0.5);
+    setChoices(choices);
+  }, [selectedCountry]);
 
-  // add the correct answer to the choices
-  choices.push(selectedCountryName);
-
-  // shuffle the choices
-  choices.sort(() => Math.random() - 0.5);
-
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     if (e.target.value === selectedCountryName) {
-      setScore((prevScore) => prevScore + 1);
-      setAskedCapitalQuestions((prevAskedFlagQuestions) => [
-        ...prevAskedFlagQuestions,
-        selectedCountryCIOC,
-      ]);
-      selectRandomCountry("capital");
+      setRevealed(true);
+      // add delay before changing question
+      setTimeout(() => {
+        setRevealed(false);
+        setScore((prevScore) => {
+          localStorage.setItem(
+            "highScore",
+            Math.max(prevScore + 1, localStorage.getItem("highScore") || 0)
+          );
+          return prevScore + 1;
+        });
+        setAskedCapitalQuestions((prevAskedCapitalQuestions) => [
+          ...prevAskedCapitalQuestions,
+          selectedCountryCIOC,
+        ]);
+        selectRandomCountry("capital");
+      }, 600);
     } else {
-      // TODO: Show game over screen
-      alert("Game Over");
+      setRevealed(true);
+      // add delay before changing question
+      setTimeout(() => {
+        gameOver();
+      }, 600);
     }
   };
 
@@ -51,7 +66,13 @@ const CapitalQuestion = (props) => {
           <Button
             value={choice}
             variant="contained"
-            color="primary"
+            color={
+              reavealed
+                ? choice === selectedCountryName
+                  ? "success"
+                  : "error"
+                : "primary"
+            }
             key={choice}
             onClick={handleClick}
             sx={{ width: isMobile ? "350px" : "500px" }}
