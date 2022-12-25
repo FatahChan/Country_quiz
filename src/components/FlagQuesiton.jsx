@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Box, Stack, Typography, Button, useMediaQuery } from "@mui/material";
-import Image from "mui-image";
 const FlagQuesiton = (props) => {
   // useMediaQuery for if weight is less than 800px
   const isMobile = useMediaQuery("(max-width:600px)");

@@ -104,9 +104,9 @@ export function App() {
         maxHeight: "100vh",
       }}
     >
-      <Stack gap={isMobile ? 2 : 4}>
+      <Stack sx={{ minHeight: "90vh" }} gap={isMobile ? 2 : 4}>
         <Typography
-          variant={isMobile ? "h4" : "h3"}
+          variant={isMobile ? "h5" : "h3"}
           component="h3"
           align="center"
         >
@@ -140,6 +140,16 @@ export function App() {
           ></CapitalQuestion>
         )}
       </Stack>
+      <Typography
+        sx={{ display: "fixed", bottom: 0 }}
+        variant="subtitle2"
+        component="h2"
+        align="center"
+      >
+        Made by:{"Ahmad Fathallah"}
+        <br />
+        <a href="https://github.com/FatahChan/Country_quiz">Source Code</a>
+      </Typography>
     </Container>
   );
 }
