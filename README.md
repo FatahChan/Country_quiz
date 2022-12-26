@@ -8,7 +8,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://neon-licorice-445f9b.netlify.app"/>
+    <a href="https://fatahchan-country-quiz.netlify.app/"/>
       Demo
     </a>
     <span> | </span>
@@ -37,26 +37,33 @@
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+![image](https://user-images.githubusercontent.com/30260221/209482422-81fa335a-c5ad-4a67-aec8-af23c902c23c.png)
+![image](https://user-images.githubusercontent.com/30260221/209482458-db67e6bd-085a-47c2-90d6-02dac963ff12.png)
+![image](https://user-images.githubusercontent.com/30260221/209482481-e2aa389b-4e34-4f82-854d-7125b83a5e0d.png)
 
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
 
-- Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
+
+Check out the project [here](https://fatahchan-country-quiz.netlify.app/)
+
+I used react in this project, learned stuff about context even though I didn't end up using it
+
 
 ### Built With
 
 <!-- This section should list any major frameworks that you built your project using. Here are a few examples.-->
 
 - [React](https://reactjs.org/)
-- [React Dom Router] (https://reactrouter.com/)
-- [Meterial UI] (https://mui.com/)
+- [React Dom Router](https://reactrouter.com/)
+- [Meterial UI](https://mui.com/)
 
 ## Features
 
 <!-- List the features of your application or follow the template. Don't share the figma file here :) -->
+
+
+- Material Design
+- Features 190+ countries
+- Save your highscore in localstorage
 
 This application/site was created as a submission to a [DevChallenges](https://devchallenges.io/challenges) challenge. The [challenge](https://devchallenges.io/challenges/Bu3G2irnaXmfwQ8sZkw8) was to build an application to complete the given user stories.
 
