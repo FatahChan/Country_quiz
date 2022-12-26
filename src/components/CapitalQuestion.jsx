@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Box, Stack, Typography, Button, useMediaQuery } from "@mui/material";
+import React, { useEffect } from "react";
+import {  Stack, Typography, Button, useMediaQuery } from "@mui/material";
 const CapitalQuestion = (props) => {
   // useMediaQuery for if weight is less than 800px
   const isMobile = useMediaQuery("(max-width:600px)");
@@ -18,10 +18,12 @@ const CapitalQuestion = (props) => {
   // get 3 random countries
   useEffect(() => {
     let choices = [];
-    for (let i = 0; i < 3; i++) {
+    while (choices.length < 3) {
       let randomIndex = Math.floor(Math.random() * countries.length);
       let randomCountry = countries[randomIndex];
-      choices.push(randomCountry.name.common);
+      if(!choices.includes(randomCountry) && randomCountry.cioc !== selectedCountryCIOC){
+        choices.push(randomCountry.name.common);
+      }
     }
     choices.push(selectedCountryName);
     choices.sort(() => Math.random() - 0.5);
