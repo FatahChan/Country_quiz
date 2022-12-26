@@ -3,6 +3,7 @@ import { Container, Stack, Typography, useMediaQuery } from "@mui/material";
 import FlagQuesiton from "./components/FlagQuesiton";
 import CapitalQuestion from "./components/CapitalQuestion";
 import { useNavigate } from "react-router-dom";
+import Loading from "./pages/Loading";
 export function App() {
   // useMediaQuery for if height is less than 800px
   const isMobile = useMediaQuery("(max-height:800px)");
@@ -93,7 +94,7 @@ export function App() {
     !selectedCapitalCountry ||
     !selectedFlagCountry
   ) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (
