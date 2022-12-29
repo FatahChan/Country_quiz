@@ -4,6 +4,8 @@
 
 <div align="center">
    Solution for a challenge from  <a href="http://devchallenges.io" target="_blank">Devchallenges.io</a>.
+<br/>
+And a submission to AOU GOOGLE student club intenership program 
 </div>
 
 <div align="center">
